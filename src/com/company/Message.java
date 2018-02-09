@@ -9,7 +9,7 @@ public class Message {
     public static String receiver;
 
     public static String nextText;
-    public static MessageList texter = new MessageList();
+
 
     public Message(String sentFrom, String sentTo, String phoneNumber, String textMessage)
     {
@@ -19,6 +19,8 @@ public class Message {
         sendText = sender + ": " + textMessage;
         texter.firstText();
     }
+
+    public static MessageList texter = new MessageList(sender, receiver, numOfReceiver);
 
     public static void textConvo()
     {

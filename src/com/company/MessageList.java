@@ -4,8 +4,17 @@ import java.text.*;
 import java.util.*;
 
 public class MessageList {
-    public static String firstText;
+    public static String from;
+    public static String to;
+    public static String phoneNumber;
     public static ArrayList <String> textMessages = new ArrayList<>();
+
+    public MessageList(String sendFrom, String sendTo, String number)
+    {
+        from = sendFrom;
+        to = sendTo;
+        phoneNumber = number;
+    }
 
     public static void firstText()
     {
@@ -22,7 +31,8 @@ public class MessageList {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         String dateTime = dateFormat.format(date);
-        System.out.println("\n" + dateTime);
+        String additionalInfo = " " + Message.sender + " to " + Message.receiver + "(" + Message.numOfReceiver + ")";
+        System.out.println("\n" + dateTime + additionalInfo);
         for(int j = 0; j < textMessages.size(); j++)
         {
             System.out.println(textMessages.get(j));
