@@ -3,30 +3,29 @@ package com.company;
 import java.util.*;
 
 public class Message {
-    public static String numOfReceiver;
-    public static String sendText;
-    public static String sender;
-    public static String receiver;
+    static String numOfReceiver;
+    static String sendText;
+    static String sender;
+    static String receiver;
 
-    public static String nextText;
+    private static String nextText;
 
-
-    public Message(String sentFrom, String sentTo, String phoneNumber, String textMessage)
+    Message(String sentFrom, String sentTo, String phoneNumber, String textMessage)
     {
         sender = sentFrom;
         receiver = sentTo;
         numOfReceiver = phoneNumber.substring(0, 3) + "-" + phoneNumber.substring(3, 6) + "-" + phoneNumber.substring(6);
         sendText = sender + ": " + textMessage;
-        texter.firstText();
+        MessageList.firstText();
     }
 
-    public static MessageList texter = new MessageList(sender, receiver, numOfReceiver);
+    private static MessageList texter = new MessageList(sender, receiver, numOfReceiver);
 
-    public static void textConvo()
+    static void textConvo()
     {
         boolean abc = true;
 
-        while (abc)
+        while (true)
         {
             Scanner input = new Scanner(System.in);
 
@@ -40,14 +39,14 @@ public class Message {
                 System.out.println("Input your next message.");
                 String sendAgain = inputNext.nextLine();
                 nextText = sender + ": " + sendAgain;
-                texter.addAnotherText(nextText);
+                MessageList.addAnotherText(nextText);
             }
             else if(sendRespQuit.equalsIgnoreCase("resp"))
             {
                 System.out.println("Input the response message.");
                 String response = inputNext.nextLine();
                 nextText = receiver + ": " + response;
-                texter.addAnotherText(nextText);
+                MessageList.addAnotherText(nextText);
             }
             else if(sendRespQuit.equalsIgnoreCase("quit"))
             {
@@ -61,7 +60,7 @@ public class Message {
         }
     }
 
-    public static void continueOrNot()
+    static void continueOrNot()
     {
         Scanner inputNow = new Scanner(System.in);
 
@@ -73,13 +72,13 @@ public class Message {
         }
         else if ((contDone.equalsIgnoreCase("done")))
         {
-            texter.printConvo();
+            MessageList.printConvo();
         }
         else
         {
             System.out.println("Invalid input. Goodbye.");
         }
 
-        texter.clearData();
+        MessageList.clearData();
     }
 }

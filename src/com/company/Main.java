@@ -1,6 +1,5 @@
 package com.company;
 
-import java.text.*;
 import java.util.*;
 
 public class Main {
@@ -23,9 +22,9 @@ public class Main {
             System.out.println("What is the message that is being sent?");
             String sendText = input.nextLine();
 
-            Message textEm = new Message(senderName, receiverName, phoneNumber, sendText);
-            textEm.textConvo();
-            textEm.continueOrNot();
+            new Message(senderName, receiverName, phoneNumber, sendText);
+            Message.textConvo();
+            Message.continueOrNot();
 
             System.out.println("\nWould you like to start again ('rep') or quit the program ('quit')?");
             Scanner finalOne = new Scanner(System.in);
